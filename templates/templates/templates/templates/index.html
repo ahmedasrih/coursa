@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COURSA - Gestion des Courses</title>
+<style>
+body{font-family:system-ui;background:#f5f7fb;margin:0;padding:20px}
+.container{max-width:800px;margin:auto}
+.card{background:white;padding:20px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.1);margin-bottom:20px}
+h1{color:#0d6efd} input,button{width:100%;padding:12px;margin:6px 0;border-radius:8px;border:1px solid #ddd}
+button{background:#0d6efd;color:white;border:none;font-weight:bold;cursor:pointer}
+.trip{border-left:4px solid #0d6efd;padding:10px;margin:10px 0;background:#f8f9ff}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="card">
+<h1>🚚 COURSA</h1>
+<p>Gestion des courses - Transport</p>
+<form action="/trips" method="post">
+<input name="origin" placeholder="Départ - منين" required>
+<input name="destination" placeholder="Destination - فين" required>
+<input name="client" placeholder="Client - السمية" required>
+<input name="price" placeholder="Prix DH - الثمن" required>
+<button type="submit">Ajouter Course +</button>
+</form>
+</div>
+<div class="card">
+<h3>📋 Liste des courses</h3>
+{% for t in trips %}
+<div class="trip">
+<b>{{ t.origin }} → {{ t.destination }}</b><br>
+Client: {{ t.client }} | Prix: {{ t.price }} DH
+</div>
+{% else %}
+<p>Aucune course pour le moment</p>
+{% endfor %}
+</div>
+</div>
+</body>
+</html>
